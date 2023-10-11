@@ -72,21 +72,21 @@ type VolumeSnapshotSettings struct {
 }
 
 type VolumeSpace struct {
-	AfsTotal                          *int  `json:"afs_total,omitempty"`
-	Available                         *int  `json:"available,omitempty"`
-	CapacityTierFootprint             *int  `json:"capacity_tier_footprint,omitempty"`
-	DedupeMetafilesFootprint          *int  `json:"dedupe_metafiles_footprint,omitempty"`
-	DedupeMetafilesTemporaryFootprint *int  `json:"dedupe_metafiles_temporary_footprint,omitempty"`
-	DelayedFreeFootprint              *int  `json:"delayed_free_footprint,omitempty"`
-	ExpectedAvailable                 *int  `json:"expected_available,omitempty"`
-	FilesystemSize                    *int  `json:"filesystem_size,omitempty"`
-	FilesystemSizeFixed               *bool `json:"filesystem_size_fixed,omitempty"`
-	FractionalReserve                 *int  `json:"fractional_reserve,omitempty"`
-	FullThresholdPercent              *int  `json:"full_threshold_percent,omitempty"`
-	IsUsedStale                       *bool `json:"is_used_stale,omitempty"`
-	LargeSizeEnabled                  *bool `json:"large_size_enabled,omitempty"`
-	LocalTierFootprint                *int  `json:"local_tier_footprint,omitempty"`
-	LogicalSpace                      *struct {
+	AfsTotal                 *int  `json:"afs_total,omitempty"`
+	Available                *int  `json:"available,omitempty"`
+	AvailablePercent         *int  `json:"available_percent,omitempty"`
+	DedupeMetafilesFootprint *int  `json:"dedupe_metafiles_footprint,omitempty"`
+	DelayedFreeFootprint     *int  `json:"delayed_free_footprint,omitempty"`
+	ExpectedAvailable        *int  `json:"expected_available,omitempty"`
+	FilesystemSize           *int  `json:"filesystem_size,omitempty"`
+	FilesystemSizeFixed      *bool `json:"filesystem_size_fixed,omitempty"`
+	Footprint                *int  `json:"footprint,omitempty"`
+	FractionalReserve        *int  `json:"fractional_reserve,omitempty"`
+	FullThresholdPercent     *int  `json:"full_threshold_percent,omitempty"`
+	IsUsedStale              *bool `json:"is_used_stale,omitempty"`
+	LargeSizeEnabled         *bool `json:"large_size_enabled,omitempty"`
+	LocalTierFootprint       *int  `json:"local_tier_footprint,omitempty"`
+	LogicalSpace             *struct {
 		Enforcement     bool `json:"enforcement"`
 		Reporting       bool `json:"reporting"`
 		Used            int  `json:"used"`
@@ -99,13 +99,12 @@ type VolumeSpace struct {
 	OverProvisioned            *int                    `json:"over_provisioned,omitempty"`
 	OverwriteReserve           *int                    `json:"overwrite_reserve,omitempty"`
 	OverwriteReserveUsed       *int                    `json:"overwrite_reserve_used,omitempty"`
-	PerformanceTierFootprint   *int                    `json:"performance_tier_footprint,omitempty"`
+	PercentUsed                *int                    `json:"percent_used,omitempty"`
 	PhysicalUsed               *int                    `json:"physical_used,omitempty"`
 	PhysicalUsedPercent        *int                    `json:"physical_used_percent,omitempty"`
 	Size                       *int                    `json:"size,omitempty"`
 	SizeAvailableForSnapshots  *int                    `json:"size_available_for_snapshots,omitempty"`
 	Snapshot                   *VolumeSnapshotSettings `json:"snapshot,omitempty"`
-	SnapshotSpill              *int                    `json:"snapshot_spill,omitempty"`
 	TotalFootprint             *int                    `json:"total_footprint,omitempty"`
 	Used                       *int                    `json:"used,omitempty"`
 	UsedByAfs                  *int                    `json:"used_by_afs,omitempty"`
