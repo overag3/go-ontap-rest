@@ -2,22 +2,22 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"os"
+	"time"
 
-	"go-ontap-rest/ontap"
-	"go-ontap-rest/util"
+	"github.com/overag3/go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/util"
 )
 
 func main() {
 	c := ontap.NewClient(
 		"https://mytestsvm.example.com",
-		&ontap.ClientOptions {
-		    BasicAuthUser: "vsadmin",
-		    BasicAuthPassword: "secret",
-		    SSLVerify: false,
-		    Debug: true,
-    		    Timeout: 60 * time.Second,
+		&ontap.ClientOptions{
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
+			SSLVerify:         false,
+			Debug:             true,
+			Timeout:           60 * time.Second,
 		},
 	)
 	var file *os.File
@@ -34,6 +34,6 @@ func main() {
 		fmt.Println(err)
 		return
 	} else {
-		fmt.Printf("Uploaded %d bytes\n", bytesUploaded);
+		fmt.Printf("Uploaded %d bytes\n", bytesUploaded)
 	}
 }

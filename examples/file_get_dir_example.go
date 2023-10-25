@@ -1,22 +1,22 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
-	"encoding/json"
 
-	"go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/ontap"
 )
 
 func main() {
 	c := ontap.NewClient(
 		"https://mytestsvm.example.com",
-		&ontap.ClientOptions {
-		    BasicAuthUser: "vsadmin",
-		    BasicAuthPassword: "secret",
-		    SSLVerify: false,
-		    Debug: true,
-    		    Timeout: 60 * time.Second,
+		&ontap.ClientOptions{
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
+			SSLVerify:         false,
+			Debug:             true,
+			Timeout:           60 * time.Second,
 		},
 	)
 	var parameters []string
@@ -27,7 +27,7 @@ func main() {
 		return
 	}
 	if len(volumes) > 0 {
-		parameters = []string{"type=directory","return_metadata=true"}
+		parameters = []string{"type=directory", "return_metadata=true"}
 		if files, response, err := c.FileGetIter(volumes[0].Uuid, "repo", parameters); err != nil {
 			fmt.Println(err)
 		} else {

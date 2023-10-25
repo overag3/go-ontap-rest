@@ -4,21 +4,21 @@ import (
 	"fmt"
 	"time"
 
-	"go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/ontap"
 )
 
 func main() {
 	c := ontap.NewClient(
 		"https://mytestsvm.example.com",
-		&ontap.ClientOptions {
-		    BasicAuthUser: "vsadmin",
-		    BasicAuthPassword: "secret",
-		    SSLVerify: false,
-		    Debug: true,
-    		    Timeout: 60 * time.Second,
+		&ontap.ClientOptions{
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
+			SSLVerify:         false,
+			Debug:             true,
+			Timeout:           60 * time.Second,
 		},
 	)
-	iscsiServices, _, err := c.IscsiServiceGetIter([]string{"enabled=true","fields=target"})
+	iscsiServices, _, err := c.IscsiServiceGetIter([]string{"enabled=true", "fields=target"})
 	if err != nil {
 		fmt.Println(err)
 	} else {

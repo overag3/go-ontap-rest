@@ -4,18 +4,18 @@ import (
 	"fmt"
 	"time"
 
-	"go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/ontap"
 )
 
 func main() {
 	c := ontap.NewClient(
 		"https://mytestsvm.example.com",
-		&ontap.ClientOptions {
-		    BasicAuthUser: "vsadmin",
-		    BasicAuthPassword: "secret",
-		    SSLVerify: false,
-		    Debug: true,
-    		    Timeout: 60 * time.Second,
+		&ontap.ClientOptions{
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
+			SSLVerify:         false,
+			Debug:             true,
+			Timeout:           60 * time.Second,
 		},
 	)
 	var parameters []string
@@ -28,10 +28,10 @@ func main() {
 	if len(expPolicies) > 0 {
 		rule := ontap.ExportPolicyRule{
 			AnonymousUser: "root",
-			Protocols: []string{"nfs"},
-			RoRule: []string{"any"},
-			RwRule: []string{"any"},
-			Superuser: []string{"any"},
+			Protocols:     []string{"nfs"},
+			RoRule:        []string{"any"},
+			RwRule:        []string{"any"},
+			Superuser:     []string{"any"},
 			Clients: []ontap.ExportRuleClient{
 				ontap.ExportRuleClient{
 					Match: "192.168.20.10",

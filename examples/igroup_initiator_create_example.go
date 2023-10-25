@@ -4,18 +4,18 @@ import (
 	"fmt"
 	"time"
 
-	"go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/ontap"
 )
 
 func main() {
 	c := ontap.NewClient(
 		"https://mytestsvm.example.com",
-		&ontap.ClientOptions {
-		    BasicAuthUser: "vsadmin",
-		    BasicAuthPassword: "secret",
-		    SSLVerify: false,
-		    Debug: true,
-    		    Timeout: 60 * time.Second,
+		&ontap.ClientOptions{
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
+			SSLVerify:         false,
+			Debug:             true,
+			Timeout:           60 * time.Second,
 		},
 	)
 	var parameters []string
@@ -29,11 +29,10 @@ func main() {
 		parameters = []string{}
 		initiator := ontap.IgroupInitiator{
 			IgroupInitiators: &[]ontap.Resource{
-                    		ontap.Resource{
+				ontap.Resource{
 					Name: "iqn.2005-02.com.open-iscsi:initiator01",
-                    		},
-            		},
-
+				},
+			},
 		}
 		if _, err := c.IgroupInitiatorCreate(igroups[0].GetRef(), &initiator); err != nil {
 			fmt.Println(err)

@@ -1,22 +1,22 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
-	"encoding/json"
 
-	"go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/ontap"
 )
 
 func main() {
 	c := ontap.NewClient(
 		"https://mytestsvm.example.com",
-		&ontap.ClientOptions {
-		    BasicAuthUser: "vsadmin",
-		    BasicAuthPassword: "secret",
-		    SSLVerify: false,
-		    Debug: true,
-    		    Timeout: 60 * time.Second,
+		&ontap.ClientOptions{
+			BasicAuthUser:     "vsadmin",
+			BasicAuthPassword: "secret",
+			SSLVerify:         false,
+			Debug:             true,
+			Timeout:           60 * time.Second,
 		},
 	)
 	var parameters []string
@@ -29,7 +29,7 @@ func main() {
 	unixPermissions := 755
 	if len(volumes) > 0 {
 		file := ontap.FileInfo{
-			Type: "directory",
+			Type:            "directory",
 			UnixPermissions: &unixPermissions,
 		}
 		if response, _, err := c.FileCreate(volumes[0].Uuid, "repo", &file); err != nil {

@@ -1,11 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"time"
 	"encoding/json"
-
-	"go-ontap-rest/ontap"
+	"fmt"
 )
 
 func main() {

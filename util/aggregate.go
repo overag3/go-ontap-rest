@@ -3,7 +3,7 @@ package util
 import (
 	"fmt"
 
-	"github.com/igor-feoktistov/go-ontap-rest/ontap"
+	"github.com/overag3/go-ontap-rest/ontap"
 )
 
 func GetAggregateMax(c *ontap.Client, svmName string) (aggrName string, spaceAvailable int64, err error) {
@@ -16,13 +16,13 @@ func GetAggregateMax(c *ontap.Client, svmName string) (aggrName string, spaceAva
 		return
 	}
 	for _, aggr := range svms[0].Aggregates {
-                if aggr.State == "online" && aggr.AvailableSize > spaceAvailable {
-		        aggrName = aggr.Name
+		if aggr.State == "online" && aggr.AvailableSize > spaceAvailable {
+			aggrName = aggr.Name
 			spaceAvailable = aggr.AvailableSize
 		}
 	}
 	if len(aggrName) == 0 {
-	        err = fmt.Errorf("GetAggregateMax(): no aggregates assigned to SVM \"%s\" found", svms[0].Name)
-        }
+		err = fmt.Errorf("GetAggregateMax(): no aggregates assigned to SVM \"%s\" found", svms[0].Name)
+	}
 	return
 }
