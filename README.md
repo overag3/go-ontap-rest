@@ -13,7 +13,7 @@ See Reference for ONTAP 9.12.1 REST API at https://library.netapp.com/ecmdocs/EC
 In order to install `go-ontap-rest` execute the following command:
 
 ```
-go get -v github.com/ifeoktistov/go-ontap-rest
+go get -v github.com/overag3/go-ontap-rest
 ```
 
 ## Tests
